@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quiz App</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet"
+    type="text/css" />
+  <link href="main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <header>
+    <h1>American History Trivia</h1>
+  </header>
+  <main>
+    <section id="start">    
+        <!--Start button-->
+        <button id="start-quiz">Start</button>
+    </section>
+
+    <section id="quiz">
+        <h2>Question</h2>
+        <form>
+            <fieldset id="answer-choices">
+                <ul>
+                    <li><input type="radio" name="answer-options" id="one" value="one"><label for="one">One</label></li>
+                    <li><input type="radio" name="answer-options" id="two" value="one"><label for="two">Two</label></li>
+                    <li><input type="radio" name="answer-options" id="three" value="one"><label for="three">Three</label></li>
+                    <li><input type="radio" name="answer-options" id="four" value="one"><label for="four">Four</label></li>
+                <ul>
+            </fieldset>
+            <input type="submit" value="Submit">
+        </form>
+        <h3>Current Progress</h3>
+            <p>Current Score: </p>
+            <p>Current Question: </p>      
+    </section>
+
+    <section id="feedback">
+        <h2>Correct/Incorrect</h2>
+        <p id="user-answer">User Answer</p>
+        <p id="correct-answer">Correct Answer</p>
+        <button id="next-question">Next Question</button>
+    </section>    
+
+    <section id="summary">
+        <h2>Summary</h2>
+        <p>Final Score Summary</p>
+        <button id="restart-quiz">Restart Quiz</button>
+    </section>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
