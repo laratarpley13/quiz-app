@@ -13,9 +13,47 @@
 
 <body>
   <header>
-    <h1>The name of your quiz</h1>
+    <h1>American History Trivia</h1>
   </header>
-  <main></main>
+  <main>
+    <section id="start">    
+        <!--Start button-->
+        <button id="start-quiz">Start</button>
+    </section>
+
+    <section id="quiz">
+        <h2>Question</h2>
+        <form>
+            <fieldset id="answer-choices">
+                <input type="radio" name="answer-options" id="one" value="one">
+                <label for="one">One</label>
+                <input type="radio" name="answer-options" id="two" value="one">
+                <label for="two">Two</label>
+                <input type="radio" name="answer-options" id="three" value="one">
+                <label for="three">Three</label>
+                <input type="radio" name="answer-options" id="four" value="one">
+                <label for="four">Four</label>
+            </fieldset>
+            <input type="submit" value="Submit">
+        </form>
+        <h3>Current Progress</h3>
+            <p>Current Score: </p>
+            <p>Current Question: </p>      
+    </section>
+
+    <section id="feedback">
+        <h2>Correct/Incorrect</h2>
+        <p id="user-answer">User Answer</p>
+        <p id="correct-answer">Correct Answer</p>
+        <button id="next-question">Next Question</button>
+    </section>    
+
+    <section id="summary">
+        <h2>Summary</h2>
+        <p>Final Score Summary</p>
+        <button id="restart-quiz">Restart Quiz</button>
+    </section>
+  </main>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
   <script src="app.js"></script>
 </body>
