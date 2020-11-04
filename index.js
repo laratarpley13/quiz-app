@@ -1,7 +1,7 @@
 /**
  * Example store structure
  */
-const store = {
+const STORE = {
     // 5 or more questions are required
     questions: [
       {
@@ -57,23 +57,9 @@ const store = {
     ],
     quizStarted: false,
     questionNumber: 0,
-    score: 0
+    score: 0,
+    correct: false
   };
-  
-  /**
-   * 
-   * Technical requirements:
-   * 
-   * Your app should include a render() function, that regenerates the view each time the store is updated. 
-   * See your course material and access support for more details.
-   *
-   * NO additional HTML elements should be added to the index.html file.
-   *
-   * You may add attributes (classes, ids, etc) to the existing HTML elements, or link stylesheets or additional scripts if necessary
-   *
-   * SEE BELOW FOR THE CATEGORIES OF THE TYPES OF FUNCTIONS YOU WILL BE CREATING 👇
-   * 
-   */
   
   /********** TEMPLATE GENERATION FUNCTIONS **********/
   function startPageTemplate() {
@@ -85,84 +71,79 @@ const store = {
     `);
   }
   
-  function questionTemplate(question, currentScore, currentQuestion) {
+  function questionTemplate() {
+    const question = STORE.questions(STORE.questionNumber)
     $("main").html(`
         //need to render the current question
         <h3>${question}</h3>
         <form>
           <fieldset id="answer-choices">
             <ul>
-                <li><input type="radio" name="answer-options" id="one" value="one"><label for="one">One</label></li>
-                <li><input type="radio" name="answer-options" id="two" value="one"><label for="two">Two</label></li>
-                <li><input type="radio" name="answer-options" id="three" value="one"><label for="three">Three</label></li>
-                <li><input type="radio" name="answer-options" id="four" value="one"><label for="four">Four</label></li>
+                <li><input type="radio" name="answer-options" id="one" value="one"><label for="one">${STORE.questions(STORE.questionNumber(answers[0]))}</label></li>
+                <li><input type="radio" name="answer-options" id="two" value="one"><label for="two">${STORE.questions(STORE.questionNumber(answers[1]))}</label></li>
+                <li><input type="radio" name="answer-options" id="three" value="one"><label for="three">${STORE.questions(STORE.questionNumber(answers[2]))}</label></li>
+                <li><input type="radio" name="answer-options" id="four" value="one"><label for="four">${STORE.questions(STORE.questionNumber(answers[3]))}</label></li>
             <ul>
           </fieldset>
           <input type="submit" value="Submit">
         </form>
         <h3>Current Progress</h3>
-          <p>Current Score: ${currentScore}/${currentQuestion}</p>
-          <p>Current Question: ${currentQuestion}/5</p>
+          <p>Current Score: ${STORE.score}/${STORE.questionNumber}</p>
+          <p>Current Question: ${STORE.questionNumber}/${STORE.questions.length}</p>
     `);
   }
 
-  function feedbackTemplate (question, userAnswer) {
+  function feedbackTemplate () {
     $("main").html(`
         <section class="feedback">
-          <h2>></h2>
-          <p>The correct answer was: ${}</p>
+          <h2>>${STORE.correct ? "Correct!" : "Incorrect"}</h2>
+          <p>The correct answer was: ${STORE.questions(STORE.questionNumber(correctAnswer))}</p>
           <button id="next-question>Next Question</button>
         </section>
     `);
   }
 
-  function summaryTemplate(correctAnswers) {
+  function summaryTemplate() {
     $("main").html(`
         <section class="summary">
           <h2>Quiz Summary</h2>
-          <p>You got ${correctAnswers} out of 5 questions correct!</p>
+          <p>You got ${STORE.score} out of ${STORE.questions.length} questions correct!</p>
           <button id="restart-quiz">Restart Quiz</button>
         </section>
     `);
   }
-
-  
-  // These functions return HTML templates
   
   /********** RENDER FUNCTION(S) **********/
   // Render function to handle other render functions
   function render() {
-    if (store.quizStarted == false) {
+    if (!STORE.quizStarted) {
       startPageTemplate();
+    } else if (STORE.feedback) {
+      feedbackTemplate();
+    } else if (STORE.questionNumber >= STORE.questions.length) {
+      summaryTemplate();
+    } else {
+      questionTemplate();
     }
   }
-
-  function renderStart() {
-
-  }
-
-  function renderProgress() {
-
-  }
-
-  functon renderFeedback() {
-
-  }
-
-  function renderSummary() {
-
-  }
-
-  function renderRestartQuiz() {
-
-  }
-  
-  // This function conditionally replaces the contents of the <main> tag based on the state of the store
-  
   
   /********** EVENT HANDLER FUNCTIONS **********/
   
   // These functions handle events (submit, click, etc)  
+  function onStart() {
+    $(main).on("click", "#start")
+  }
+
+  function onSubmit() {
+
+  }
+
+  function onNextQuestion() {
+
+  }
+
+  function onRestart
+
 
   function main() {
     render();
