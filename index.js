@@ -12,7 +12,8 @@ const STORE = {
           'New York City',
           'Boston'
         ],
-        correctAnswer: 'New York City'
+        correctAnswer: 2
+        correctWrittenOut: 'New York City'
       },
       {
         question: 'Who first discovered America?',
@@ -22,7 +23,8 @@ const STORE = {
           'Christopher Columbos',
           'Hernando Cortes'
         ],
-        correctAnswer: 'Leif Erikson'
+        correctAnswer: 0
+        correctWrittenOut: 'Leif Erikson'
       },
       {
         question: 'When was the Declaration of Independence signed?',
@@ -32,7 +34,8 @@ const STORE = {
           'August 2, 1776',
           'September 20, 1776'
         ],
-        correctAnswer: 'August 2, 1776'
+        correctAnswer: 2
+        correctWrittenOut: 'August 2, 1776'
       },
       {
         question: 'What happened to those convicted at the Salem witch trials?',
@@ -42,7 +45,8 @@ const STORE = {
           'hanged at the gallows',
           'were set free'
         ],
-        correctAnswer: 'hanged at the gallows'
+        correctAnswer: 2
+        correctWrittenOut: 'hanged at the gallows'
       },
       {
         question: 'Who was the first president to live in the White House?',
@@ -52,7 +56,8 @@ const STORE = {
           'Thomas Jefferson', ,
           'James Madison'
         ],
-        correctAnswer: '2019'
+        correctAnswer: 1
+        correctWrittenOut: 'John Adams'
       }
     ],
     quizStarted: false,
@@ -72,17 +77,17 @@ const STORE = {
   }
   
   function questionTemplate() {
-    const question = STORE.questions(STORE.questionNumber)
+    const question = STORE.questions[STORE.questionNumber]
     $("main").html(`
         //need to render the current question
         <h3>${question}</h3>
         <form>
           <fieldset id="answer-choices">
             <ul>
-                <li><input type="radio" name="answer-options" id="one" value="one"><label for="one">${STORE.questions(STORE.questionNumber(answers[0]))}</label></li>
-                <li><input type="radio" name="answer-options" id="two" value="one"><label for="two">${STORE.questions(STORE.questionNumber(answers[1]))}</label></li>
-                <li><input type="radio" name="answer-options" id="three" value="one"><label for="three">${STORE.questions(STORE.questionNumber(answers[2]))}</label></li>
-                <li><input type="radio" name="answer-options" id="four" value="one"><label for="four">${STORE.questions(STORE.questionNumber(answers[3]))}</label></li>
+                <li><input type="radio" name="answer-options" id="0" value="0" required><label for="0">${question.answers[0]}</label></li>
+                <li><input type="radio" name="answer-options" id="1" value="1" required><label for="1">${question.answers[1]}</label></li>
+                <li><input type="radio" name="answer-options" id="2" value="2" required><label for="2">${question.answers[2]}</label></li>
+                <li><input type="radio" name="answer-options" id="3" value="3" required><label for="3">${question.answers[3]}</label></li>
             <ul>
           </fieldset>
           <input type="submit" value="Submit">
@@ -94,10 +99,11 @@ const STORE = {
   }
 
   function feedbackTemplate () {
+    const question = STORE.questions[STORE.questionNumber];
     $("main").html(`
         <section class="feedback">
           <h2>>${STORE.correct ? "Correct!" : "Incorrect"}</h2>
-          <p>The correct answer was: ${STORE.questions(STORE.questionNumber(correctAnswer))}</p>
+          <p>The correct answer was: ${question.correctWrittenOut}.</p>
           <button id="next-question>Next Question</button>
         </section>
     `);
@@ -130,12 +136,27 @@ const STORE = {
   /********** EVENT HANDLER FUNCTIONS **********/
   
   // These functions handle events (submit, click, etc)  
+  function startedQuiz() {
+    STORE.quizStarted = true;
+    render();
+  }
+  
   function onStart() {
-    $(main).on("click", "#start")
+    $(main).on("click", "#start", startedQuiz)
+  }
+
+  function answerSubmitted() {
+    const userAnswer = parseInt($('input[type="radio"]:checked').val());
+    const question = STORE.questions[STORE.questionNumber];
+    if (userAnswer.correctAnswer === question) {
+      STORE.score++;
+      STORE.correct = true;
+    }
+    render();
   }
 
   function onSubmit() {
-
+    
   }
 
   function onNextQuestion() {
