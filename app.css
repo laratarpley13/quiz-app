@@ -1,8 +1,45 @@
-/* Your styles should be mobile-first and responsive */
+header {
+  padding: 15px 15px 5px 15px;
+  text-align: center;
+}
 
-/** 
-  * If you are unclear on how to utilize a mobile-first, responsive technique to write your CSS, here is an example: 
-  *
-  * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
-  *
-*/
+.start-page {
+  border: 3px solid gray;
+  padding: 5px 15px 15px 15px;
+  text-align: center;
+}
+
+.quiz-page {
+  border: 3px solid grey;
+  margin: 10px;
+  padding: 10px;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  padding: 5px;
+}
+
+ul li label {
+  padding: 5px;
+}
+
+#answer-choices {
+  padding: 10px;
+  margin: 10px;
+}
+
+#feedback {
+  border: 3px solid grey;
+  margin: 10px;
+  padding: 10px;
+}
+
+#summary {
+  border: 3px solid grey;
+  margin: 10px;
+  padding: 10px;
+}
