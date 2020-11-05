@@ -85,8 +85,8 @@ function questionTemplate() {
           <li><input type="radio" name="answer-options" id="2" value="2" required><label for="2">${targetQuestion.answers[2]}</label></li>
           <li><input type="radio" name="answer-options" id="3" value="3" required><label for="3">${targetQuestion.answers[3]}</label></li>
         <ul>
+        <input type="submit" value="Submit">
       </form>
-      <button id="submit" type="submit">Submit</button>
     </section>
     <section class="current-progress">
       <h3>Current Progress</h3>
@@ -136,7 +136,6 @@ function render() {
 // These functions handle events (submit, click, etc)  
 function startedQuiz() {
   STORE.quizStarted = true;
-  console.log("quiz started")
   render();
 }
 
@@ -145,10 +144,9 @@ function onStart() {
 }
 
 function answerSubmitted() {
+  //event.preventDefault();
   const userAnswer = parseInt($('input[type="radio"]:checked').val());
-  console.log(userAnswer); //debugging line
   const targetQuestion = STORE.questions[STORE.questionNumber];
-  console.log(targetQuestion.correctAnswer); //debugging line
   if (userAnswer === targetQuestion.correctAnswer) {
     STORE.score++;
     STORE.correct = true;
@@ -158,7 +156,7 @@ function answerSubmitted() {
 }
 
 function onSubmit() {
-  $("main").on("click", "#submit", answerSubmitted);
+  $("main").on("submit", answerSubmitted);
 }
 
 function nextQuestion() {
