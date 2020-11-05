@@ -1,68 +1,152 @@
 * {
   box-sizing: border-box;
+  background-color: navy;
+  font-family: sans-serif;
 }
 
 header {
   padding: 15px 15px 5px 15px;
   text-align: center;
   font-size: 15px;
+  color: white;
 }
 
 .start-page {
-  border: 3px solid gray;
+  border: 8px solid darkred;
+  background-color: white;
   padding: 5px 15px 15px 15px;
   text-align: center;
   margin: auto;
   width: 95%;
 }
 
+.start-page button {
+  background-color: #2f3136;
+  color: white;
+  border: none;
+  margin: 15px;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 15px;
+}
+
+.start-page h2 {
+  background-color: white;
+  color: #2f3136;
+}
+
 .quiz-page {
-  border: 3px solid grey;
+  border: 8px solid darkred;
   padding: 10px;
   width: 95%;
   margin: auto;
+  background-color: white;
+}
+
+.quiz-page button {
+  background-color: #2f3136;
+  color: white;
+  border: none;
+  margin: auto;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 15px;
+}
+
+.quiz-page h3{
+  text-align: center;
+  background-color: white;
+  font-size: 20px;
+  color: #2f3136;
+}
+
+form {
+  background-color: white;
 }
 
 ul {
   list-style: none;
   margin: 10px;
+  background-color: white;
 }
 
 li {
   padding: 8px;
   font-size: 18px;
+  background-color: white;
+  color: #2f3136;
 }
 
 ul li label {
   padding: 5px;
+  background-color: white;
 }
 
 .current-progress {
   font-size: 17px;
   text-align: center;
+  color: white;
 }
 
 .feedback {
-  border: 3px solid grey;
+  border: 8px solid darkred;
   margin: auto;
   padding: 10px;
   width: 95%;
+  color: #2f3136;
+  background-color: white;
+}
+
+.feedback button {
+  background-color: #2f3136;
+  color: white;
+  border: none;
+  margin: auto;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 15px;
 }
 
 .feedback p {
-  font-size: 17px;
+  font-size: 19px;
+  background-color: white;
+}
+
+.feedback h2 {
+  background-color: white;
 }
 
 .summary {
-  border: 3px solid grey;
+  border: 8px solid darkred;
   margin: auto;
   padding: 10px;
   width: 95%;
+  background-color: white;
+  color: #2f3136;
+}
+
+.summary button {
+  background-color: #2f3136;
+  color: white;
+  border: none;
+  margin: auto;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 15px;
+}
+
+.summary h2 {
+  background-color: white;
+}
+
+.summary p {
+  background-color: white;
+  font-size: 19px;
 }
 
 @media all and (min-width: 800px) {
   header {
-    font-size: 25px;
+    font-size: 22px;
   }
   
   li {
