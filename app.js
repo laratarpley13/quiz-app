@@ -85,8 +85,8 @@ function questionTemplate() {
           <li><input type="radio" name="answer-options" id="2" value="2" required><label for="2">${targetQuestion.answers[2]}</label></li>
           <li><input type="radio" name="answer-options" id="3" value="3" required><label for="3">${targetQuestion.answers[3]}</label></li>
         <ul>
-        <button id="submit" type="submit">Submit</button>
       </form>
+      <button id="submit" type="submit">Submit</button>
     </section>
     <section class="current-progress">
       <h3>Current Progress</h3>
