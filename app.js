@@ -144,7 +144,7 @@ function onStart() {
 }
 
 function answerSubmitted() {
-  //event.preventDefault();
+  event.preventDefault();
   const userAnswer = parseInt($('input[type="radio"]:checked').val());
   const targetQuestion = STORE.questions[STORE.questionNumber];
   if (userAnswer === targetQuestion.correctAnswer) {
