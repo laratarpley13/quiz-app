@@ -43,7 +43,7 @@ header {
   background-color: white;
 }
 
-.quiz-page button {
+.quiz-page input[type=submit] {
   background-color: #2f3136;
   color: white;
   border: none;
