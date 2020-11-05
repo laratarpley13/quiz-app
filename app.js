@@ -87,9 +87,12 @@ function questionTemplate() {
         <ul>
         <button id="submit" type="submit">Submit</button>
       </form>
+    </section>
+    <section class="current-progress">
       <h3>Current Progress</h3>
-        <p>Current Score: ${STORE.score}/${STORE.questionNumber}</p>
-        <p>Questions Answered: ${STORE.questionNumber}/${STORE.questions.length}</p>
+      <p>Current Score: ${STORE.score}/${STORE.questionNumber}</p>
+      <p>Questions Answered: ${STORE.questionNumber}/${STORE.questions.length}</p>
+    </section>
   `);
 }
 

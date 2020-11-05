@@ -1,45 +1,95 @@
+* {
+  box-sizing: border-box;
+}
+
 header {
   padding: 15px 15px 5px 15px;
   text-align: center;
+  font-size: 15px;
 }
 
 .start-page {
   border: 3px solid gray;
   padding: 5px 15px 15px 15px;
   text-align: center;
+  margin: auto;
+  width: 95%;
 }
 
 .quiz-page {
   border: 3px solid grey;
-  margin: 10px;
   padding: 10px;
+  width: 95%;
+  margin: auto;
 }
 
 ul {
   list-style: none;
+  margin: 10px;
 }
 
 li {
-  padding: 5px;
+  padding: 8px;
+  font-size: 18px;
 }
 
 ul li label {
   padding: 5px;
 }
 
-#answer-choices {
-  padding: 10px;
-  margin: 10px;
+.current-progress {
+  font-size: 17px;
+  text-align: center;
 }
 
-#feedback {
+.feedback {
   border: 3px solid grey;
-  margin: 10px;
+  margin: auto;
   padding: 10px;
+  width: 95%;
 }
 
-#summary {
+.feedback p {
+  font-size: 17px;
+}
+
+.summary {
   border: 3px solid grey;
-  margin: 10px;
+  margin: auto;
   padding: 10px;
+  width: 95%;
+}
+
+@media all and (min-width: 800px) {
+  header {
+    font-size: 25px;
+  }
+  
+  li {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 22px;
+  }
+
+  .start-page {
+    margin: auto;
+    width: 50%;
+  }
+
+  .quiz-page {
+    margin: auto;
+    width: 50%;
+  }
+
+  .feedback {
+    margin: auto;
+    width: 50%;
+  }
+
+  .summary {
+    margin: auto;
+    width: 50%;
+  }
 }
