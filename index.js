@@ -12,7 +12,7 @@ const STORE = {
           'New York City',
           'Boston'
         ],
-        correctAnswer: 2
+        correctAnswer: 2,
         correctWrittenOut: 'New York City'
       },
       {
@@ -23,7 +23,7 @@ const STORE = {
           'Christopher Columbos',
           'Hernando Cortes'
         ],
-        correctAnswer: 0
+        correctAnswer: 0,
         correctWrittenOut: 'Leif Erikson'
       },
       {
@@ -34,7 +34,7 @@ const STORE = {
           'August 2, 1776',
           'September 20, 1776'
         ],
-        correctAnswer: 2
+        correctAnswer: 2,
         correctWrittenOut: 'August 2, 1776'
       },
       {
@@ -45,7 +45,7 @@ const STORE = {
           'hanged at the gallows',
           'were set free'
         ],
-        correctAnswer: 2
+        correctAnswer: 2,
         correctWrittenOut: 'hanged at the gallows'
       },
       {
@@ -56,7 +56,7 @@ const STORE = {
           'Thomas Jefferson', ,
           'James Madison'
         ],
-        correctAnswer: 1
+        correctAnswer: 1,
         correctWrittenOut: 'John Adams'
       }
     ],
@@ -82,15 +82,13 @@ const STORE = {
         //need to render the current question
         <h3>${question}</h3>
         <form>
-          <fieldset id="answer-choices">
-            <ul>
-                <li><input type="radio" name="answer-options" id="0" value="0" required><label for="0">${question.answers[0]}</label></li>
-                <li><input type="radio" name="answer-options" id="1" value="1" required><label for="1">${question.answers[1]}</label></li>
-                <li><input type="radio" name="answer-options" id="2" value="2" required><label for="2">${question.answers[2]}</label></li>
-                <li><input type="radio" name="answer-options" id="3" value="3" required><label for="3">${question.answers[3]}</label></li>
-            <ul>
-          </fieldset>
-          <input type="submit" value="Submit">
+          <ul>
+            <li><input type="radio" name="answer-options" id="0" value="0" required><label for="0">${question.answers[0]}</label></li>
+            <li><input type="radio" name="answer-options" id="1" value="1" required><label for="1">${question.answers[1]}</label></li>
+            <li><input type="radio" name="answer-options" id="2" value="2" required><label for="2">${question.answers[2]}</label></li>
+            <li><input type="radio" name="answer-options" id="3" value="3" required><label for="3">${question.answers[3]}</label></li>
+          <ul>
+          <button id="submit" type="submit">Submit</button>
         </form>
         <h3>Current Progress</h3>
           <p>Current Score: ${STORE.score}/${STORE.questionNumber}</p>
@@ -125,11 +123,11 @@ const STORE = {
     if (!STORE.quizStarted) {
       startPageTemplate();
     } else if (STORE.feedback) {
-      feedbackTemplate();
+        feedbackTemplate();
     } else if (STORE.questionNumber >= STORE.questions.length) {
-      summaryTemplate();
+        summaryTemplate();
     } else {
-      questionTemplate();
+        questionTemplate();
     }
   }
   
@@ -142,7 +140,7 @@ const STORE = {
   }
   
   function onStart() {
-    $(main).on("click", "#start", startedQuiz)
+    $(main).on("click", "#start", startedQuiz);
   }
 
   function answerSubmitted() {
@@ -156,14 +154,29 @@ const STORE = {
   }
 
   function onSubmit() {
-    
+    $("main").on("click", "#submit", answerSubmitted);
   }
 
+  function nextQuestion() {
+    STORE.questionNumber++;
+    STORE.correct = false;
+    render();
+  }
+  
   function onNextQuestion() {
-
+    $("main").on("click", "#next-question", nextQuestion);
   }
 
-  function onRestart
+  function restart() {
+    STORE.score = 0;
+    STORE.questionNumber = 0;
+    STORE.startedQuiz = false;
+    render();
+  }
+  
+  function onRestart () {
+    $("main").on("click", "#restart-quiz", restart);
+  } 
 
 
   function main() {
